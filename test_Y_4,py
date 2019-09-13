@@ -129,19 +129,19 @@ class Graph():
 # 
 # Just need a placeholder for x and then once x is filled in we can solve it!   
 
-g = Graph()
+# g = Graph()
 
-g.set_as_default()
+# g.set_as_default()
 
-A = Variable(10)
+# A = Variable(10)
 
-b = Variable(1)
+# b = Variable(1)
 
-x = Placeholder()
+# x = Placeholder()
 
-y = multiply(A,x)
+# y = multiply(A,x)
 
-z = add(y,b)
+# z = add(y,b)
 
 def traverse_postorder(operation):
     """ 
@@ -199,7 +199,21 @@ sess = Session()
 
 result = sess.run(operation=z,feed_dict={x:10})
 
+###########
 
+g = Graph()
+
+g.set_as_default()
+
+A = Variable([[10,20],[30,40]])
+
+b = Variable([1,1])
+
+x = Placeholder()
+
+y = matmul(A,x)
+
+z = add(y,b)
 
 
 
