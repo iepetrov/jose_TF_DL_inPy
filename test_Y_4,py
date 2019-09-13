@@ -143,6 +143,26 @@ class Graph():
 
 # z = add(y,b)
 
+
+########### Exmpl_2 ##############
+
+g = Graph()
+
+g.set_as_default()
+
+A = Variable([[10,20],[30,40]])
+
+b = Variable([1,1])
+
+x = Placeholder()
+
+y = matmul(A,x)
+
+z = add(y,b)
+
+
+
+
 def traverse_postorder(operation):
     """ 
     PostOrder Traversal of Nodes. Basically makes sure computations are done in 
@@ -199,21 +219,7 @@ sess = Session()
 
 result = sess.run(operation=z,feed_dict={x:10})
 
-###########
 
-g = Graph()
-
-g.set_as_default()
-
-A = Variable([[10,20],[30,40]])
-
-b = Variable([1,1])
-
-x = Placeholder()
-
-y = matmul(A,x)
-
-z = add(y,b)
 
 
 
