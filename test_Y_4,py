@@ -129,6 +129,10 @@ class Graph():
 # 
 # Just need a placeholder for x and then once x is filled in we can solve it!   
 
+##############################
+# ex_1
+##############################
+
 # g = Graph()
 
 # g.set_as_default()
@@ -146,19 +150,42 @@ class Graph():
 
 ########### Exmpl_2 ##############
 
+# g = Graph()
+
+# g.set_as_default()
+
+# A = Variable([[10,20],[30,40]])
+
+# b = Variable([1,1])
+
+# x = Placeholder()
+
+# y = matmul(A,x)
+
+# z = add(y,b)
+
+
+
+##############################
+# ex_3
+##############################
+
 g = Graph()
 
 g.set_as_default()
 
-A = Variable([[10,20],[30,40]])
+w = Variable([1,1])
 
-b = Variable([1,1])
+b = Variable(-5)
 
 x = Placeholder()
 
-y = matmul(A,x)
+z = add(matmul(w,x),b)
 
-z = add(y,b)
+a = Sigmoid(z)
+
+
+
 
 
 
@@ -217,7 +244,13 @@ class Session:
 
 sess = Session()
 
-result = sess.run(operation=z,feed_dict={x:10})
+### EX_2
+# result = sess.run(operation=z,feed_dict={x:10})
+
+### EX_3
+sess.run(operation=a,feed_dict={x:[8,10]})
+
+sess.run(operation=a,feed_dict={x:[0,-10]})
 
 print(result)
 result
@@ -225,8 +258,13 @@ result
 
 
 
+
+
+
+
+
 # #%%
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 # # get_ipython().magic('matplotlib inline')
 
 # def sigmoid(z):
@@ -258,8 +296,30 @@ class Sigmoid(Operation):
 ###
 ### Classification Example
 
+from sklearn.datasets import make_blobs
+
+data = make_blobs(n_samples = 50,n_features=2,centers=2,random_state=75)
+
+type(data)
+
+# data[0]
+# data[1]
+
+features = data[0]
+plt.scatter(features[:,0],features[:,1])
+
+labels = data[1]
+plt.scatter(features[:,0],features[:,1],c=labels,cmap='coolwarm')
 
 
+
+
+# #%%
+# # DRAW A LINE THAT SEPERATES CLASSES
+# x = np.linspace(0,11,10)
+# y = -x + 5
+# plt.scatter(features[:,0],features[:,1],c=labels,cmap='coolwarm')
+# plt.plot(x,y)
 
 
 
