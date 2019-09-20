@@ -170,6 +170,34 @@ class Graph():
 # ex_3
 ##############################
 
+import matplotlib.pyplot as plt
+
+class Sigmoid(Operation):
+ 
+    
+    def __init__(self, z):
+
+        # a is the input node
+        super().__init__([z])
+
+    def compute(self, z_val):
+        
+        return 1/(1+np.exp(-z_val))
+
+
+### Classification Example
+
+from sklearn.datasets import make_blobs
+
+data = make_blobs(n_samples = 50,n_features=2,centers=2,random_state=75)
+
+features = data[0]
+plt.scatter(features[:,0],features[:,1])
+
+labels = data[1]
+plt.scatter(features[:,0],features[:,1],c=labels,cmap='coolwarm')
+
+
 g = Graph()
 
 g.set_as_default()
@@ -248,9 +276,10 @@ sess = Session()
 # result = sess.run(operation=z,feed_dict={x:10})
 
 ### EX_3
-sess.run(operation=a,feed_dict={x:[8,10]})
+res1 = sess.run(operation=a,feed_dict={x:[8,10]})
 
-sess.run(operation=a,feed_dict={x:[0,-10]})
+res3 = sess.run(operation=a,feed_dict={x:[2,-5]})
+res3 = sess.run(operation=a,feed_dict={x:[2,-10]})
 
 print(result)
 result
@@ -264,52 +293,52 @@ result
 
 
 # #%%
-import matplotlib.pyplot as plt
-# # get_ipython().magic('matplotlib inline')
+# import matplotlib.pyplot as plt
+# # # get_ipython().magic('matplotlib inline')
 
-# def sigmoid(z):
-#     return 1/(1+np.exp(-z))
+# # def sigmoid(z):
+# #     return 1/(1+np.exp(-z))
 
-# sample_z = np.linspace(-10,10,100)
-# sample_a = sigmoid(sample_z)
+# # sample_z = np.linspace(-10,10,100)
+# # sample_a = sigmoid(sample_z)
 
-# plt.plot(sample_z,sample_a)
+# # plt.plot(sample_z,sample_a)
 
 
-#### Sigmoid as an Operation
-class Sigmoid(Operation):
+# #### Sigmoid as an Operation
+# class Sigmoid(Operation):
  
     
-    def __init__(self, z):
+#     def __init__(self, z):
 
-        # a is the input node
-        super().__init__([z])
+#         # a is the input node
+#         super().__init__([z])
 
-    def compute(self, z_val):
+#     def compute(self, z_val):
         
-        return 1/(1+np.exp(-z_val))
+#         return 1/(1+np.exp(-z_val))
 
 
 
 
-###
-###
-### Classification Example
+# ###
+# ###
+# ### Classification Example
 
-from sklearn.datasets import make_blobs
+# from sklearn.datasets import make_blobs
 
-data = make_blobs(n_samples = 50,n_features=2,centers=2,random_state=75)
+# data = make_blobs(n_samples = 50,n_features=2,centers=2,random_state=75)
 
-type(data)
+# type(data)
 
-# data[0]
-# data[1]
+# # data[0]
+# # data[1]
 
-features = data[0]
-plt.scatter(features[:,0],features[:,1])
+# features = data[0]
+# plt.scatter(features[:,0],features[:,1])
 
-labels = data[1]
-plt.scatter(features[:,0],features[:,1],c=labels,cmap='coolwarm')
+# labels = data[1]
+# plt.scatter(features[:,0],features[:,1],c=labels,cmap='coolwarm')
 
 
 
@@ -339,7 +368,7 @@ plt.scatter(features[:,0],features[:,1],c=labels,cmap='coolwarm')
 
 
 
-from sklearn.datasets import make_blobs
+
 
 
 
