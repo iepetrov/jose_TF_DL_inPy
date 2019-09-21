@@ -86,3 +86,13 @@ with graph_two.as_default():
     print(graph_two is tf.get_default_graph())
 
 graph_two is tf.get_default_graph()
+
+######## Ch. 28
+sess = tf.InteractiveSession()
+my_tensor = tf.random_uniform((4,4),0,1)
+my_var = tf.Variable(initial_value=my_tensor)
+# print(my_var)
+# #### Note! You must initialize all global variables!
+init = tf.global_variables_initializer()
+init.run()
+sess.run(my_var)
