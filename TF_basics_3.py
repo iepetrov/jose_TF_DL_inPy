@@ -140,3 +140,9 @@ with tf.Session() as sess:
 final_slope
 final_intercept
 
+x_test = np.linspace(-1,11,10)
+y_pred_plot = final_slope*x_test + final_intercept
+
+plt.plot(x_test,y_pred_plot,'r')
+
+plt.plot(x_data,y_label,'*')
