@@ -68,8 +68,8 @@ batch_size = 8
 # ** Variables **
 
 #%%
-m = tf.Variable(0.5)
-b = tf.Variable(1.0)
+m = tf.Variable(0.07)
+b = tf.Variable(-.21)
 
 #%% [markdown]
 # ** Placeholders **
@@ -203,7 +203,7 @@ train_metrics = estimator.evaluate(input_fn=train_input_func,steps=1000)
 
 
 #%%
-eval_metrics = estimator.evaluate(input_fn=eval_input_func,steps=1000)
+eval_metrics = estimator.evaluate(input_fn=eval_input_func,steps=100)
 
 
 #%%
